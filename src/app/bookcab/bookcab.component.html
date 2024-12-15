@@ -1,0 +1,165 @@
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+  <!-- Username -->
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input
+      id="username"
+      type="text"
+      class="form-control"
+      formControlName="username"
+      [ngClass]="{
+        'is-invalid':
+          formControls['username'].invalid && formControls['username'].touched
+      }"
+    />
+    <div
+      *ngIf="
+        formControls['username'].invalid && formControls['username'].touched
+      "
+      class="invalid-feedback"
+    >
+      Username is required.
+    </div>
+  </div>
+
+  <!-- Car License Plate -->
+  <div class="form-group">
+    <label for="carLicensePlate">Car License Plate:</label>
+    <input
+      id="carLicensePlate"
+      type="text"
+      class="form-control"
+      formControlName="carLicensePlate"
+      [ngClass]="{
+        'is-invalid':
+          formControls['carLicensePlate'].invalid &&
+          formControls['carLicensePlate'].touched
+      }"
+    />
+    <div
+      *ngIf="
+        formControls['carLicensePlate'].invalid &&
+        formControls['carLicensePlate'].touched
+      "
+      class="invalid-feedback"
+    >
+      Car License Plate is required.
+    </div>
+  </div>
+
+  <!-- Pickup Location -->
+  <div class="form-group">
+    <label for="pickupLocation">Pickup Location:</label>
+    <input
+      id="pickupLocation"
+      type="text"
+      class="form-control"
+      formControlName="pickupLocation"
+      [ngClass]="{
+        'is-invalid':
+          formControls['pickupLocation'].invalid &&
+          formControls['pickupLocation'].touched
+      }"
+    />
+    <div
+      *ngIf="
+        formControls['pickupLocation'].invalid &&
+        formControls['pickupLocation'].touched
+      "
+      class="invalid-feedback"
+    >
+      Pickup Location is required.
+    </div>
+  </div>
+
+  <!-- Dropoff Location -->
+  <div class="form-group">
+    <label for="dropoffLocation">Dropoff Location:</label>
+    <input
+      id="dropoffLocation"
+      type="text"
+      class="form-control"
+      formControlName="dropoffLocation"
+      [ngClass]="{
+        'is-invalid':
+          formControls['dropoffLocation'].invalid &&
+          formControls['dropoffLocation'].touched
+      }"
+    />
+    <div
+      *ngIf="
+        formControls['dropoffLocation'].invalid &&
+        formControls['dropoffLocation'].touched
+      "
+      class="invalid-feedback"
+    >
+      Dropoff Location is required.
+    </div>
+  </div>
+
+  <!-- Pickup Time -->
+  <div class="form-group">
+    <label for="pickupTime">Pickup Time:</label>
+    <input
+      id="pickupTime"
+      type="datetime-local"
+      class="form-control"
+      formControlName="pickupTime"
+      [ngClass]="{
+        'is-invalid':
+          formControls['pickupTime'].invalid &&
+          formControls['pickupTime'].touched
+      }"
+    />
+    <div
+      *ngIf="
+        formControls['pickupTime'].invalid && formControls['pickupTime'].touched
+      "
+      class="invalid-feedback"
+    >
+      Pickup Time is required.
+    </div>
+  </div>
+
+  <!-- Dropoff Time -->
+  <div class="form-group">
+    <label for="dropoffTime">Dropoff Time:</label>
+    <input
+      id="dropoffTime"
+      type="datetime-local"
+      class="form-control"
+      formControlName="dropoffTime"
+      [ngClass]="{
+        'is-invalid':
+          formControls['dropoffTime'].invalid &&
+          formControls['dropoffTime'].touched
+      }"
+    />
+    <div
+      *ngIf="
+        formControls['dropoffTime'].invalid &&
+        formControls['dropoffTime'].touched
+      "
+      class="invalid-feedback"
+    >
+      Dropoff Time is required.
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="bookingForm.invalid"
+  >
+    Book Now
+  </button>
+
+  <!-- Success and Error Messages -->
+  <div *ngIf="isBookingSuccess" class="alert alert-success mt-3">
+    Booking successful! Redirecting to the bookings list.
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</form>

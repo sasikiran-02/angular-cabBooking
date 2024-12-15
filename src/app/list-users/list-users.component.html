@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2>Users List</h2>
+  <!-- <button class="btn btn-primary mb-3" (click)="createUser()">
+    Create User
+  </button> -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Username</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td>{{ user.username }}</td>
+        <!-- Format the date using the DatePipe -->
+        <td>{{ user.createdAt | date : "medium" }}</td>
+        <!-- Using Angular Date Pipe -->
+      </tr>
+    </tbody>
+  </table>
+</div>

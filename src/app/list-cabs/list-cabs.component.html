@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2>Cabs List</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Car ID</th>
+        <th>Model</th>
+        <th>License Plate</th>
+        <th>Capacity</th>
+        <th>Availability Status</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{ car.carID }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.licensePlate }}</td>
+        <td>{{ car.capacity }}</td>
+        <td>{{ car.availabilityStatus }}</td>
+        <td>{{ car.createdAt | date : "medium" }}</td>
+        <!-- Format date -->
+      </tr>
+    </tbody>
+  </table>
+</div>

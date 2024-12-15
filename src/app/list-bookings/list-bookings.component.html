@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h2>Bookings List</h2>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>User Name</th>
+        <th>Car Name</th>
+        <th>Pickup Location</th>
+        <th>Dropoff Location</th>
+        <th>Pickup Time</th>
+        <th>Dropoff Time</th>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Car License</th>
+        <th>Fare</th>
+        <!-- Added Fare column -->
+        <th>Duration (min)</th>
+        <!-- Added Duration column -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.user.name }}</td>
+        <td>{{ booking.car.model }}</td>
+        <td>{{ booking.pickupLocation }}</td>
+        <td>{{ booking.dropoffLocation }}</td>
+        <td>{{ booking.pickupTime | date : "short" }}</td>
+        <td>{{ booking.dropoffTime | date : "short" }}</td>
+        <td>{{ booking.bookingStatus }}</td>
+        <td>{{ booking.createdAt | date : "short" }}</td>
+        <td>{{ booking.car.licensePlate }}</td>
+        <td>
+          <!-- Displaying the dynamically calculated fare -->
+          {{ booking.fare ? (booking.fare | currency : "USD") : "Loading..." }}
+        </td>
+        <td>
+          <!-- Dynamically calculating Duration -->
+          {{ calculateDuration(booking.pickupTime, booking.dropoffTime) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
